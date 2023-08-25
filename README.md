@@ -1,5 +1,3 @@
-# Modelo para Apresentação do Subgrupo
-
 # Equipe `LAMEV`
 
 # Subgrupo `A`
