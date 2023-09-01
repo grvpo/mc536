@@ -1,6 +1,6 @@
 Aluno(_ra_, nome)  
 Restaurante(_id_restaurante_, nome, endereco)  
-Cardapio(_id_cardapio_, id_restaurante, data, refeicao)  
+Cardapio(_id_cardapio_, id_restaurante, data, refeicao, tipoCardapio)  
 id_restaurante: chave estrangeira para Restaurante
 
 Porção(_id_porção_, nome_no_cardapio, tipo_de_porção, quantidade_produzida, quantidade_consumida)  
