@@ -1,27 +1,56 @@
+# Equipe `LAMEV`
+
+# Subgrupo `A`
+* `Artur De Miranda Rodrigues` - `224538`
+* `Eliel Oliveira da Silva` - `221437`
+* `Matheus Farias Barbosa` - `230888`
+
+## Modelo Conceitual ER Revisado
+
+> Coloque aqui o diagrama entidade-relacionamento original ou revisado para transformação em modelo relacional. O diagrama deve atributos, cardinalidade e entidades fracas.
+>
+> Indique abaixo do diagrama (como no exemplo), se é o original ou o revisado.
+>
+> Não é necessário colocar o diagrama UML revisado.
+
+<img src="images/ER_Diagram_MMORPG.png" width="400px" height="auto">
+
+*Diagrama ER Revisado*
+
+## Mapeamento para o Modelo Relacional
+
+> Coloque aqui o modelo relacional que mapeia o modelo ER (original ou revisado). Nesse modelo deve constar o esquema das relações, com as chaves primárias e estrangeiras. A especificação de tipos de atributos é opcional.
+
+> Exemplo de modelo lógico relacional
+
+
+~~~
 Aluno(_ra_, nome)  
 Restaurante(_id_restaurante_, nome, endereco)  
-Cardapio(_id_cardapio_, id_restaurante, data, refeicao, tipoCardapio)  
-id_restaurante: chave estrangeira para Restaurante
-
 Porção(_id_porção_, nome_no_cardapio, tipo_de_porção, quantidade_produzida, quantidade_consumida)  
-CardapioOferece(_id_porção_, _id_cardapio_)  
-_id_porção_: Chave estrangeira para Porção  
-_id_cardapio_: Chave estrangeira para Cardápio  
+Cardapio(__id_cardapio__, restaurante, data, refeicao, tipo_cardapio)
+  restaurante chave estrangeira -> Restaurante(id_restaurante)
 
-Ingrediente(_id_ingrediente_, nome, unidade_de_referencia)  
-IngredientePorção(_id_ingrediente_porção, id_ingrediente, quantidade)  
-id_ingrediente: Chave estrangeira para __Ingrediente__  
+CardapioOferece(__porção__, __cardapio__)
+  porção chave estrangeira -> Porção(id_porcao)
+  cardapio chave estrangeira -> Cardapio(id_cardapio)
 
-IngredienteIngrediente(_id_ingrediente_principal_, id_ingrediente_secundario, proporção_ingrediente_secundario)  
-id_ingrediente_principal: Chave estrangeira para __Ingrediente__  
-id_ingrediente_secundario: Chave estrangeira para __Ingrediente__  
+Ingrediente(__ingrediente__, nome, unidade_de_referencia)
+
+IngredientePorção(__porção__, __ingrediente__, quantidade)  
+  porção chave estrangeira -> Porção(id_porção)
+  ingrediente chave estrangeira -> Ingrediente(id_ingrediente)  
+
+ComposiçãoIngrediente(__ingrediente_principal__, __ingrediente_secundario__, proporção_ingrediente_secundario)  
+  ingrediente_principal chave estrangeira -> Ingrediente(id_ingrediente)  
+  ingrediente_secundario chave estrangeira -> Ingrediente(id_ingrediente)
 
 Nutriente(_id_nutriente_, nome) 
-NutrienteIngrediente(_id_nutriente_, _id_ingrediente_, proporcao_nutriente_ingrediente)  
-_id_nutriente_: Chave estrangeira para __Ingrediente__
-_id_ingrediente_
+NutrienteIngrediente(_id_nutriente_, _id_ingrediente_, proporção_nutriente_ingrediente)  
+  ingrediente_principal chave estrangeira -> Ingrediente(id_ingrediente)  
+  ingrediente_secundario chave estrangeira -> Ingrediente(id_ingrediente)
 
-Consumo(_id_consumo_, id_porcao, ra_aluno, data, refeicao_do_dia)
-ra_aluno: chave estrangeira para Aluno
-id_porcao: chave estrangeira para Porção
-
+Consumo(__aluno__, __porção__, data, refeicao_do_dia)
+  aluno chave estrangeira -> Aluno(ra)
+  porção chave estrangeira -> Porção(id_porcao)
+~~~
