@@ -16,7 +16,7 @@ IngredienteIngrediente(_id_ingrediente_principal_, id_ingrediente_secundario, pr
 id_ingrediente_principal: Chave estrangeira para __Ingrediente__  
 id_ingrediente_secundario: Chave estrangeira para __Ingrediente__  
 
-Nutriente(_id_nutriente_, nome)
+Nutriente(_id_nutriente_, nome) 
 NutrienteIngrediente(_id_nutriente_, _id_ingrediente_, proporcao_nutriente_ingrediente)  
 _id_nutriente_: Chave estrangeira para __Ingrediente__
 _id_ingrediente_
