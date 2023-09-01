@@ -25,32 +25,32 @@
 
 
 ~~~
-Aluno(_ra_, nome)  
-Restaurante(_id_restaurante_, nome, endereco)  
-Porção(_id_porção_, nome_no_cardapio, tipo_de_porção, quantidade_produzida, quantidade_consumida)  
-Cardapio(__id_cardapio__, restaurante, data, refeicao, tipo_cardapio)
-  restaurante chave estrangeira -> Restaurante(id_restaurante)
+Aluno(__RA__, Nome)  
+Restaurante(__NomeRestaurante__, endereço)  
+Porção(__NomePorção__, TipoPorção, QuantidadeProduzida, QuantidadeConsumida)  
+Cardápio(__CardápioID__, Restaurante, Data, Refeição, TipoCardapio)
+  Restaurante chave estrangeira -> Restaurante(NomeRestaurante)
 
-CardapioOferece(__porção__, __cardapio__)
-  porção chave estrangeira -> Porção(id_porcao)
-  cardapio chave estrangeira -> Cardapio(id_cardapio)
+CardapioOferece(__Porção__, __Cardapio__)
+  Porção chave estrangeira -> Porção(NomePorção)
+  Cardápio chave estrangeira -> Cardápio(CardápioID)
 
-Ingrediente(__ingrediente__, nome, unidade_de_referencia)
+Ingrediente(__NomeIngrediente__, unidade_de_referencia)
 
-IngredientePorção(__porção__, __ingrediente__, quantidade)  
-  porção chave estrangeira -> Porção(id_porção)
-  ingrediente chave estrangeira -> Ingrediente(id_ingrediente)  
+IngredientePorção(__ID__, Porção, Ingrediente, Quantidade)  
+  Porção chave estrangeira -> Porção(NomePorção)
+  Ingrediente chave estrangeira -> Ingrediente(NomeIngrediente)  
 
-ComposiçãoIngrediente(__ingrediente_principal__, __ingrediente_secundario__, proporção_ingrediente_secundario)  
-  ingrediente_principal chave estrangeira -> Ingrediente(id_ingrediente)  
-  ingrediente_secundario chave estrangeira -> Ingrediente(id_ingrediente)
+ComposiçãoIngrediente(__ID__, IngredientePrincipal, IngredienteSegundário, Proporção)  
+  IngredientePrincipal chave estrangeira -> Ingrediente(NomeIngrediente)  
+  IngredienteSecundário chave estrangeira -> Ingrediente(NomeIngrediente)
 
-Nutriente(_id_nutriente_, nome) 
-NutrienteIngrediente(_id_nutriente_, _id_ingrediente_, proporção_nutriente_ingrediente)  
-  ingrediente_principal chave estrangeira -> Ingrediente(id_ingrediente)  
-  ingrediente_secundario chave estrangeira -> Ingrediente(id_ingrediente)
+Nutriente(__NomeNutriente__) 
+NutrienteIngrediente(__ID__, Nutriente, Ingrediente, Proporção)  
+  IngredientePrincipal chave estrangeira -> Ingrediente(NomeIngrediente)  
+  IngredienteSecundario chave estrangeira -> Ingrediente(NomeIngrediente)
 
-Consumo(__aluno__, __porção__, data, refeicao_do_dia)
-  aluno chave estrangeira -> Aluno(ra)
-  porção chave estrangeira -> Porção(id_porcao)
+Consumo(__ID__, Aluno, Porção, data, Refeição)
+  Aluno chave estrangeira -> Aluno(RA)
+  Porção chave estrangeira -> Porção(NomePorção)
 ~~~
