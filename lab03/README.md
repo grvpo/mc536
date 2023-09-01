@@ -7,23 +7,11 @@
 
 ## Modelo Conceitual ER Revisado
 
-> Coloque aqui o diagrama entidade-relacionamento original ou revisado para transformação em modelo relacional. O diagrama deve atributos, cardinalidade e entidades fracas.
->
-> Indique abaixo do diagrama (como no exemplo), se é o original ou o revisado.
->
-> Não é necessário colocar o diagrama UML revisado.
-
-<img src="images/ER_Diagram_MMORPG.png" width="400px" height="auto">
+<img src="images/er_atualizado.png" width="400px" height="auto">
 
 *Diagrama ER Revisado*
 
 ## Mapeamento para o Modelo Relacional
-
-> Coloque aqui o modelo relacional que mapeia o modelo ER (original ou revisado). Nesse modelo deve constar o esquema das relações, com as chaves primárias e estrangeiras. A especificação de tipos de atributos é opcional.
-
-> Exemplo de modelo lógico relacional
-
-
 ~~~
 Aluno(__RA__, Nome)  
 Restaurante(__NomeRestaurante__, endereço)  
