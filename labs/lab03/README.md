@@ -4,7 +4,7 @@ Cardapio(_id_cardapio_, id_restaurante, data, refeicao)
 id_restaurante: chave estrangeira para Restaurante
 
 Porção(_id_porção_, nome_no_cardapio, tipo_de_porção, quantidade_produzida, quantidade_consumida)  
-CardapioPorção(_id_porção_, _id_cardapio_)  
+CardapioOferece(_id_porção_, _id_cardapio_)  
 _id_porção_: Chave estrangeira para Porção  
 _id_cardapio_: Chave estrangeira para Cardápio  
 
