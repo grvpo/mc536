@@ -1,0 +1,45 @@
+==========================1==================================
+SELECT Food_Code, FCID_Code, Ingredient_Num, Commodity_Weight
+    FROM Recipes
+    WHERE
+        Food_Code = '27111300'
+        AND Mod_Code = 0
+    ORDER BY Ingredient_Num;
+==========================2==================================
+SELECT Recipes.Food_Code, Crop_Group_Description AS Ingrediente, Recipes.FCID_Code, Ingredient_Num, Commodity_Weight
+    FROM Recipes, FCID_Description, Crop_Group
+    WHERE
+        Recipes.Food_Code = '27111300'
+        AND Recipes.Mod_Code = 0
+        AND FCID_Description.FCID_Code = Recipes.FCID_Code
+        AND Crop_Group.CGN = FCID_Description.CGN
+        AND Crop_Group.CGL = FCID_Description.CG_Subgroup;
+==========================3==================================
+SELECT Crop_Group.CGN, Crop_Group_Description
+    FROM Recipes, FCID_Description, Crop_Group
+    WHERE
+        Recipes.Food_Code = '27111300'
+        AND Recipes.Mod_Code = 0
+        AND FCID_Description.FCID_Code = Recipes.FCID_Code
+        AND Crop_Group.CGN = FCID_Description.CGN
+        AND Crop_Group.CGN = Crop_Group.CGL
+    GROUP BY Crop_Group.CGN, Crop_Group_Description;
+==========================4==================================
+SELECT Crop_Group_Description, COUNT(*) AS participacao_em_receitas
+    FROM FCID_Description, Recipes, Crop_Group
+    WHERE 
+        FCID_Description.FCID_Code = Recipes.FCID_Code
+        AND Recipes.Mod_Code = 0
+        AND FCID_Description.CG_Subgroup = Crop_Group.CGL 
+        AND FCID_Description.CGN = Crop_Group.CGN
+    GROUP BY Crop_Group_Description
+    ORDER BY participacao_em_receitas DESC;
+==========================5==================================
+SELECT Crop_Group.CGN, Crop_Group.Crop_Group_Description, AVG(Intake) AS consumo_medio
+    FROM Crop_Group, Intake, FCID_Description
+    WHERE
+        Intake.FCID_Code = FCID_Description.FCID_Code 
+        AND FCID_Description.CGN=Crop_Group.CGN
+        AND Crop_Group.CGL = Crop_Group.CGN
+    GROUP BY Crop_Group.CGN, Crop_Group.Crop_Group_Description
+    ORDER BY AVG(Intake)
