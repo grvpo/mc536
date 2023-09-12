@@ -21,7 +21,7 @@ SELECT Crop_Group.CGN, Crop_Group_Description
         AND FCID_Description.FCID_Code = Recipes.FCID_Code
         AND Crop_Group.CGN = FCID_Description.CGN
         AND Crop_Group.CGN = Crop_Group.CGL
-    GROUP BY Crop_Group.CGN, Crop_Group_Description;
+    GROUP BY Crop_Group.CGN;
 ==========================4==================================
 SELECT FCID_Desc, COUNT(*) AS participacao_em_receitas
     FROM FCID_Description, Recipes
@@ -35,4 +35,4 @@ SELECT Crop_Group.CGN, Crop_Group.Crop_Group_Description, AVG(Intake) AS consumo
         Intake.FCID_Code = FCID_Description.FCID_Code 
         AND FCID_Description.CGN = Crop_Group.CGN
         AND Crop_Group.CGL = Crop_Group.CGN
-    GROUP BY Crop_Group.CGN, Crop_Group.Crop_Group_Description;
+    GROUP BY Crop_Group.CGN;
