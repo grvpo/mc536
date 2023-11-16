@@ -58,5 +58,11 @@ MERGE (d)-[q:DensityTreats]-(p)
 ON CREATE SET q.weight = 1
 ON MATCH SET q.weight = q.weight + 1
 
+// podemos estabelecer limiares para pegar remédios que são muito usados para tratar certas doenças, bem como para pegar efeitos colaterais que estão mais ligados à certos medicamentos. Assim, podemos descobrir os remédios mais usados para uma doença, e que estão associados poucos ou muitos efeitos colaterais
 
+MATCH (p)-[r:DensityTreats]->(q)
+WHERE r.weight > 15
+MATCH (p)-[s:SideEffect]->(q)
+WHERE s IS NULL OR s.weight < 15
+RETURN p, q
 ~~~
