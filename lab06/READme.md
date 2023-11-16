@@ -19,24 +19,28 @@ Construa um grafo ligando os medicamentos aos efeitos colaterais (com pesos asso
 
 ### Resolução
 ~~~cypher
+CREATE INDEX FOR (d:Drug) ON (d.code)
+CREATE INDEX FOR (p:Pathology) ON (p.code)
+CREATE INDEX FOR ()-[t:Treats]-() ON (t.personId)
+CREATE INDEX FOR ()-[s:SideEffect]-() ON (s.weight)
+CREATE INDEX FOR (p:Person) ON (p.personId)
+
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/santanche/lab2learn/master/data/faers-2017/drug-use.csv' AS line
-MERGE (p:Person {code: line.idperson})
 MERGE (d:Drug {code: line.codedrug})
-MERGE (p)-[u:Uses {pathologyCode: line.codepathology}]->(d)
+MERGE (p:Pathology {code: line.codepathology})
+MERGE (d)-[t:Treats {personId: line.idperson}]-(p)
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/santanche/lab2learn/master/data/faers-2017/sideeffect.csv' AS line
-MERGE (p:Person {code: line.idPerson})
+MERGE (p:Person {personId: line.idPerson})
 MERGE (q:Pathology {code: line.codePathology})
 MERGE (p)-[c:Colateral]->(q)
 
-CREATE INDEX FOR (p:Person) ON (p.code)
-CREATE INDEX FOR (d:Drug) ON (d.code)
-CREATE INDEX FOR (q:Pathology) ON (q.code)
-
-MATCH (q:Pathology)<-[:Colateral]-(:Person)-[:Uses]->(d:Drug)
-MERGE (d)-[c:Causes]->(q)
-ON CREATE SET c.weight=1
-ON MATCH SET c.weight=c.weight+1
+MATCH (p:Person)-[c:Colateral]-(d:Pathology)
+MATCH ()-[t:Treats]-(q:Drug)
+WHERE p.personId = t.personId
+MERGE (q)-[s:SideEffect]->(d)
+ON CREATE SET s.weight = 1
+ON MATCH SET s.weight = s.weight + 1
 ~~~
 
 ## Exercício
@@ -47,5 +51,12 @@ Proponha um tipo de análise e escreva uma sentença em Cypher que realize a an�
 
 ### Resolução
 ~~~cypher
-(escreva aqui a resolução em Cypher)
+// primeiro vamos criar uma relação que nos dá a densidade das relações entre droga-trata-patologia, ou seja, quantas pessoas usaram tal droga para tratar uma patologia.
+
+MATCH (d:Drug)-[t:Treats]-(p:Pathology)
+MERGE (d)-[q:DensityTreats]-(p)
+ON CREATE SET q.weight = 1
+ON MATCH SET q.weight = q.weight + 1
+
+
 ~~~
