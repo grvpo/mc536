@@ -1,1 +1,1 @@
-asdfasd
+Vamos propor uma rede de ingredientes, onde cada aresta representa que os dois ingredientes estão na mesma receita. Cada aresta tem um peso que corresponde à quantas receitas aqueles dois ingredientes aparecem juntos.
