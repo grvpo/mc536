@@ -6,4 +6,4 @@
 
 4- Quais são as receitas que possuem ingredientes com grupos mais variados?
 
-5- Qual a quantidade média de alimentos por receita
+5- Qual a quantidade média de alimentos por receita?
