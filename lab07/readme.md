@@ -6,4 +6,4 @@
 
 4- Quais são as receitas que possuem ingredientes com grupos mais variados?
 
-5- Quais são os ingredientes que mais aparecem em receitas? Esse ingredientes possuem Intake_avg altos? (saber se são tempeiros ou se são ingredientes como carne etc., pois então a massa seria baixa ou alta respectivamente)
+5- Qual a quantidade média de alimentos por receita
