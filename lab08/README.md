@@ -5,6 +5,9 @@
 * `Eliel Oliveira da Silva` - `221437`
 
 ## Modelo Lógico do Banco de Dados de Grafos
+<img src="images/modelo-1.png" width="600px" height="auto">
+<img src="images/modelo-2.png" width="600px" height="auto">
+<img src="images/modelo-3.png" width="600px" height="auto">
 
 ## Perguntas de Pesquisa/Análise Combinadas e Respectivas Análises
 
